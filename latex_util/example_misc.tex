@@ -1,0 +1,234 @@
+
+
+
+\documentclass[12pt, letterpaper]{article}
+
+% \usepackage[export]{adjustbox}    % graphics positioning
+\usepackage{array}                  % Table/tabular
+\usepackage{subcaption}             % Subfigure
+\usepackage{amsmath}                % matrix
+\usepackage{float}                  % 'H' positioning
+\usepackage{graphicx}               % LaTeX package to import graphics
+% \graphicspath{{images}} %configuring the graphicx package
+\graphicspath{{.}} %configuring the graphicx package
+
+
+\numberwithin{equation}{section}
+
+
+\title{Latex Examples}
+\author{Anders Erik}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\footnote [1] { footnote tex 1 } 
+\footnote [4] { footnote text 2 } 
+
+% \includegraphics[width=0.5\textwidth, right]{./tex/chinstrap.png}
+
+% FIGURE USING FLOAT - [H]
+\begin{figure}[H]
+% \begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=0.5\textwidth]{./tex/chinstrap.png}
+    \caption{A nice plot.}
+    \label{fig:mesh1}
+\end{figure}
+
+
+% SUBFIGURE
+\begin{figure}[H]
+
+\begin{subfigure}{0.1\textwidth}
+% \includegraphics[width=0.9\linewidth, height=0.1\textheight]{./tex/chinstrap.png} 
+\caption{Caption1}
+\label{fig:subim1}
+\end{subfigure}
+
+\begin{subfigure}{0.4\textwidth}
+% \includegraphics[width=0.5\linewidth]{./tex/chinstrap.png}
+\caption{Caption 2}
+\label{fig:subim2}
+\end{subfigure}
+
+\caption{Caption for this figure with two images}
+\label{fig:image2}
+
+\end{figure}
+
+% TABLE
+\begin{center}
+% \begin{tabular}[t]{ | m{5em} | m{1cm}| m{1cm} | }
+% \begin{tabular}[b]{ | m{5em} || m{2cm} | m{1cm} | } 
+\begin{tabular}{|| c | c | c ||}
+  \hline
+  cell1& cell2 & cell3 \\ 
+  \hline
+  cell4 & cell5 & cell6 \\ 
+  \hline
+  cell7 \newline cell7  & cell8 & cell9 \\ 
+  \hline
+\end{tabular}
+\end{center}
+
+
+\section*{Indentation}
+\setlength{\parindent}{20pt}
+
+20pt paragraph indent fdasj dklasjdlk asjdljasldjas jdaskl jdlask jdaslkd jasldasj
+
+20pt indent again
+\setlength{\parindent}{0pt}
+
+no indent
+
+
+
+\[
+\frac{12}{12}
+\]
+
+\[
+\pi
+\eqno 2.1
+\]
+
+\begin{equation}
+E = mc^2 \tag{3.1} \label{eq:3.1}
+\end{equation}
+
+\begin{equation}
+E = mc^2 \label{eq:4.1}
+\end{equation}
+
+\begin{equation}
+E = mc^2 \tag{5.1}
+\end{equation}
+
+
+$$
+\begin{bmatrix}
+1 \\% 1 & 2 & 3\\
+a% a & b & c
+\end{bmatrix}
+\eqno 2.2
+$$
+
+\[
+\begin{pmatrix}
+  1 & 2 \\
+  3 & 4
+\end{pmatrix}
+\leqno 2.2
+\]
+
+This is text contained in the first paragraph. 
+This is text contained in the first paragraph. 
+This is text contained in the first paragraph.\par
+This is text contained in the second paragraph. 
+This is text contained in the second paragraph.
+This is text contained in the second paragraph.
+
+
+\begin{center}
+Example 1: The following paragraph (given in quotes) is an 
+example of centred alignment using the center environment. 
+
+``La\TeX{} is a document preparation system and document markup 
+language. \LaTeX{} uses the \TeX{} typesetting program for formatting 
+its output, and is itself written in the \TeX{} macro language. 
+\LaTeX{} is not the name of a particular (executable) typesetting program, but 
+refers to the suite of commands (\TeX{} macros) which form the markup 
+conventions used to typeset \LaTeX{} documents."
+\end{center}
+
+
+% \ref{fig:your-label}
+
+Hello world!
+$Hello world!$ %math mode 
+
+
+\begin{flushleft}
+Flushleft
+\end{flushleft}
+
+\begin{flushright}
+Flushright
+\end{flushright}
+
+Some of the \textbf{greatest}
+discoveries in \underline{science} 
+were made by \textbf{\textit{accident}}.
+
+
+\section*{Notes for My Paper}
+
+\subsection*{How to handle topicalization}
+% \sas
+aa sa
+
+$\pi$
+
+$$\pi$$
+
+\[
+\pi r^2
+\]
+
+
+\section*{Math}
+
+\[
+\alpha \phi \psi \Gamma A
+\frac{ \frac{b}{B} }{a}
+\def\sum_ {2+2}
+\sum_ { \frac{a}{i} + a}
+\frac{a}{i}
+a \over b  % splits the whole math expression
+{a \over b}  % but not this one
+\eqno {2}
+\]
+
+% % \matrix {a\,b \choose c\,d} % matex
+
+\[
+\langle \rho, \Theta, \Phi \rangle
+\]
+
+\[
+({\Gamma \over dx })''
+\]
+
+\[
+y_i^3
+y^3_i
+\]
+
+\[
+\cup \bigcup \cap
+\]
+
+\[
+\begin {pmatrix} a & b \\ c & d \end {pmatrix}
+\begin {array}{rcl} a \\ b \\ c  \end {array}
+\begin {bmatrix} a \\ b \\ c  \end {bmatrix}
+\]
+
+\[
+% \mathbb {RAD}
+% \mathscr{P}
+\infty
+\int_{-2}^{2} \prod \coprod
+\]
+
+Horizontal spacing $a \,\,\, + \,\,\, b \:\:\:  + \:\:\: c \;\;\; + \;\;\; d $
+
+% $\mathfrak{g}$
+
+Here are some greek letters: $\mu\nu\omega\Omega\upsilon\Upsilon$
+
+\end{document}

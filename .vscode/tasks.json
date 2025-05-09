@@ -1,0 +1,87 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+
+        {
+            "label": "make dirs",
+            "type": "shell",
+            "command": "mkdir -p build && mkdir -p build/latex && mkdir -p build/html",
+        },
+    
+        {
+            "label": "Build Latex",
+            "type": "shell",
+            "command": "pdflatex",
+            "args": [
+                "-output-directory=build/latex",
+                "-file-line-error",
+                "-halt-on-error",
+                "-interaction=nonstopmode",
+                "${file}",
+            ],
+            "dependsOn": "make dirs",
+            "problemMatcher": { // Problem matcher does not provide any feedback right now?? BUT it supresses lack of matcher prompt on build
+                "owner": "latex",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                "regexp": "^(.*\\.tex):(\\d+): (.+)$",
+                "file": 1,
+                "line": 2,
+                "message": 3
+                }
+            }
+        },
+
+        
+        {
+            "label": "build_current_html",
+            "type": "shell",
+            "command": "scripts/build_tex_to_html.sh window",
+            "problemMatcher": [],
+        },
+
+        {
+            "label": "examples_all_to_html",
+            "type": "shell",
+            // "command": "pandoc ${file} -s -o latex/${fileBasenameNoExtension}.html"
+            // "command": "pandoc ${file} -s --mathjax -o build/html/${fileBasenameNoExtension}.html", // mathjax support
+            // "command": "htlatex",
+            // "args": [
+            //     "${file}",
+            //     "\"xhtml,mathjax\" ",
+            // ],
+            "command": "scripts/build_examples_html.sh all",
+        },
+        {
+            "label": "example_math_to_html",
+            "type": "shell",
+            "command": "scripts/build_examples_html.sh math",
+            "problemMatcher": [],
+        },
+        {
+            "label": "example_misc_to_html",
+            "type": "shell",
+            "command": "scripts/build_examples_html.sh misc",
+            "problemMatcher": [],
+        },
+        {
+            "label": "example_layout_to_html",
+            "type": "shell",
+            "command": "scripts/build_examples_html.sh layout",
+            "problemMatcher": [],
+        },
+        {
+            "label": "example_image_to_html",
+            "type": "shell",
+            "command": "scripts/build_examples_html.sh image",
+            "problemMatcher": [],
+        },
+        {
+            "label": "HTTP server",
+            "type": "shell",
+            "command": "python3 -m http.server 8000",
+        },
+    ]
+}

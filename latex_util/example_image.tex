@@ -1,0 +1,56 @@
+
+
+
+\documentclass[12pt, letterpaper]{article}
+
+% \usepackage[export]{adjustbox}    % graphics positioning
+\usepackage{subcaption}             % Subfigure
+\usepackage{float}                  % 'H' positioning
+\usepackage{graphicx}               % LaTeX package to import graphics
+% \graphicspath{{images}} %configuring the graphicx package
+\graphicspath{{../../../image/examples}} %configuring the graphicx package
+
+
+
+\title{Latex Examples}
+\author{Anders Erik}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% \includegraphics[width=0.5\textwidth, right]{./tex/chinstrap.png}
+
+% FIGURE USING FLOAT - [H]
+\begin{figure}[H]
+% \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./chinstrap_s.png}
+    \caption{A nice plot.}
+    \label{fig:mesh1}
+\end{figure}
+
+
+% SUBFIGURE
+\begin{figure}[H]
+
+\begin{subfigure}{0.1\textwidth}
+\includegraphics[width=0.9\linewidth, height=0.1\textheight]{./chinstrap_s.png} 
+\caption{Caption1}
+\label{fig:subim1}
+\end{subfigure}
+
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=0.5\linewidth]{./chinstrap_s.png}
+\caption{Caption 2}
+\label{fig:subim2}
+\end{subfigure}
+
+\caption{Caption for this figure with two images}
+\label{fig:image2}
+
+\end{figure}
+
+
+\end{document}

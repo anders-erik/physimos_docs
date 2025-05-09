@@ -1,0 +1,176 @@
+
+
+
+\documentclass[12pt, letterpaper]{article}
+
+% \usepackage[export]{adjustbox}    % graphics positioning
+\usepackage{array}                  % Table/tabular
+\usepackage{amsmath}                % matrix
+\usepackage{float}                  % 'H' positioning
+
+
+\numberwithin{equation}{section}
+
+
+\title{Latex Examples - Math}
+\author{Anders Erik}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+
+
+\section*{Equations}
+
+\[
+\frac{12}{12}
+\]
+
+
+$\pi$
+
+$$\pi$$
+
+\[
+\pi r^2
+\]
+
+\[
+\pi
+\eqno 2.1
+\]
+
+\begin{equation}
+E = mc^2 \tag{3.1} \label{eq:3.1}
+\end{equation}
+
+\begin{equation}
+E = mc^2 \label{eq:4.1}
+\end{equation}
+
+\begin{equation}
+E = mc^2 \tag{5.1}
+\end{equation}
+
+
+$$
+\begin{bmatrix}
+1 \\% 1 & 2 & 3\\
+a% a & b & c
+\end{bmatrix}
+\eqno 2.2
+$$
+
+\[
+\begin{pmatrix}
+  1 & 2 \\
+  3 & 4
+\end{pmatrix}
+\leqno 2.2
+\]
+
+
+
+% \ref{fig:your-label}
+
+
+
+\subsection*{How to handle topicalization}
+
+
+\section{Symbols}
+
+\subsection{Misc}
+
+
+\[
+({\Gamma \over dx })''
+\]
+
+\[
+y_i^3
+y^3_i
+\]
+
+
+\[
+\alpha \phi \psi \Gamma A
+\frac{ \frac{b}{B} }{a}
+\def\sum_ {2+2}
+\sum_ { \frac{a}{i} + a}
+\frac{a}{i}
+a \over b  % splits the whole math expression
+{a \over b}  % but not this one
+\eqno {2}
+\]
+
+\begin{equation}
+\infty
+\end{equation}
+
+
+
+\subsection{sub / superscript}
+
+
+
+
+\subsection{Letters}
+
+
+$\mathfrak{g}$
+
+Here are some greek letters: $\mu\nu\omega\Omega\upsilon\Upsilon$
+
+\begin{tabular}{|| c | c | c ||}
+  \hline
+  Alpha & $A$ & $\alpha$ \\ 
+  \hline
+  Beta & $B$ & $\beta$ \\ 
+  \hline
+  Gamma & $\Gamma$ & $\gamma$ \\ 
+  \hline
+  epsilon & $E$ & $\epsilon$ \\ 
+  \hline
+\end{tabular}
+
+\subsection{Sets}
+
+
+\[
+\cup \bigcup \cap
+\]
+
+\subsection{Iteration}
+
+\[
+ \prod \coprod \sum_i^n
+\]
+
+\[
+\int_{-2}^{2}
+\]
+Integral \(\int_{low}^{high} x^3 \,dx\) as part of text.
+
+\subsection{Structures}
+
+
+% % \matrix {a\,b \choose c\,d} % matex
+
+\[
+\langle \rho, \Theta, \Phi \rangle
+\]
+
+
+\[
+\begin {pmatrix} a & b \\ c & d \end {pmatrix}
+\begin {array}{rcl} a \\ b \\ c  \end {array}
+\begin {bmatrix} a \\ b \\ c  \end {bmatrix}
+\]
+
+
+
+\end{document}

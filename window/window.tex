@@ -1,0 +1,59 @@
+
+\documentclass[12pt]{article}
+\begin{document}
+
+
+
+
+\section*{Coordinate Systems}
+
+% TABLE
+\begin{center}
+% \begin{tabular}[t]{ | m{5em} | m{1cm}| m{1cm} | }
+% \begin{tabular}[b]{ | m{5em} || m{2cm} | m{1cm} | } 
+\begin{tabular}{|| c | c | c | c ||}
+    \hline
+    Name & Symbol & Unit & Matrix \\ 
+    \hline
+    \hline
+    Input & i & sc &   \[ p_{target} = M_{i/target} p_i
+                        \] \\ 
+    \hline
+    Sanity & s & sc &   \[ M_{i/s} = 
+                            \begin{pmatrix}
+                            1 & 0 & 0 \\
+                            0 & -1 & h_w \\
+                            0 & 0 & 1
+                            \end{pmatrix}
+                        \] \\ 
+    \hline
+    Normalized & n & nn & \[ M_{n/s} = 
+                            \begin{pmatrix}
+                            \frac{1}{w_w} & 0  \\
+                            0 & \frac{1}{h_w} \\
+                            \end{pmatrix}
+                        \] \\ 
+    \hline
+    Pixels & p & px & \[    M_{s/p} = 
+                            \begin{pmatrix}
+                            CS_x & 0  \\
+                            0 & CS_y \\
+                            \end{pmatrix}
+                        \] \\ 
+    \hline
+    Millimeters & m & mm & \[   M_{p/m} = 
+                                \begin{pmatrix}
+                                (\frac{dm_x}{dp})_x & 0  \\
+                                0 & (\frac{dm}{dp})_y \\
+                                \end{pmatrix}
+                            \]  \\ 
+    \hline
+\end{tabular}
+\end{center}
+
+
+
+
+
+\end{document}
+
