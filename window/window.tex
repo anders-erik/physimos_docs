@@ -2,10 +2,54 @@
 \documentclass[12pt]{article}
 \begin{document}
 
+\tableofcontents
+
+\section{Notation}
+
+\subsection{Coordinate Systems [$CS$]}
+
+A Coordinate system (often referred to as $CS$ ) is specified using a point (called its origin and is denoted by $CS_o$) and two unit axes ($CS_1$ and $CS_2$). 
+
+
+\subsection{Unit}
+
+The length of a unit axis of a $CS$ is refered to as the $CS$'s \textbf{unit}.
+
+
+\subsection{Points}
+
+All points are assumed to be two dimensionsional.
+
+A point is written as $p_{CS}$, with $CS$ representing the specific coordinate system. A point measured in the $millimeter$ coordinate system for instance, should be written as  $p_{mm}$.
+
+Formally a point is defined as $p = p_{CS} := \{(x, y) \in \mathbb{R}^2\}$, unless explicitly stated otherwise. Only x or y can be referred to using the set $p_{\{x, y\}}$ or $p_{CS_{\{x, y\}}}$.
+
+\section{GLFW}
+
+https://www.glfw.org
+
+As the Physimos window depends on GLFW for cross platform OS interaction, some basic GLFW coverage is necessary here.
+
+\subsection{Units}
+
+The primary unit of the GLFW library is (virtual) screen coordinates, which we will refere to as $sc$.
+
+
+\subsection{Coordinate systems}
+
+Two coordinate systems are used. They differ only by a translation. 
+
+\textit{Virtual Screen} : measured from the top left corner of the primary monitor. A point in virtual screen coordinates will be written as $p_{sc}$.
+
+\textit{Content Area} : 
 
 
 
-\section*{Coordinate Systems}
+
+\section{Physimos Window [PW]}
+
+\subsection{Coordinate Systems}
+
 
 % TABLE
 \begin{center}
@@ -16,10 +60,10 @@
     Name & Symbol & Unit & Matrix \\ 
     \hline
     \hline
-    Input & i & sc &   \[ p_{target} = M_{i/target} p_i
+    Input & i & \textit{sc} &   \[ p_{target} = M_{i/target} p_i
                         \] \\ 
     \hline
-    Sanity & s & sc &   \[ M_{i/s} = 
+    Sanity & s & \textit{sc} &   \[ M_{i/s} = 
                             \begin{pmatrix}
                             1 & 0 & 0 \\
                             0 & -1 & h_w \\

@@ -36,7 +36,7 @@
 
         
         {
-            "label": "build_current_html",
+            "label": "build_window_tex_to_html",
             "type": "shell",
             "command": "scripts/build_tex_to_html.sh window",
             "problemMatcher": [],

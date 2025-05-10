@@ -44,14 +44,20 @@ build_example_math() {
 
 build_example_image() {
 
-    IMAGE_DIR=${BUILD_HTML_DIR}"/example_image"
-    mkdir -p $IMAGE_DIR
-    cp -r ./latex_util/example_image.tex $IMAGE_DIR/example_image.tex
+    # Setup for image-example
+    IMAGE_BUILD_DIR=${BUILD_HTML_DIR}"/example_image"
+    mkdir -p $IMAGE_BUILD_DIR
+    cp -r ./latex_util/example_image.tex $IMAGE_BUILD_DIR/example_image.tex
     
-    cd $IMAGE_DIR
-
+    # Copy images to the build directory
+    IMAGE_SOURCE_DIR=./image/examples
+    IMAGE_DEST_DIR=${IMAGE_BUILD_DIR}/images
+    mkdir -p $IMAGE_DEST_DIR
+    cp ${IMAGE_SOURCE_DIR}/* ${IMAGE_DEST_DIR}
+    
+    # Build
+    cd $IMAGE_BUILD_DIR
     htlatex example_image.tex "xhtml,mathjax" 
-
     cd -
 }
 
