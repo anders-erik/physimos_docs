@@ -26,6 +26,23 @@
 \footnote [1] { footnote tex 1 } 
 \footnote [4] { footnote text 2 } 
 
+
+\subsection{\aa\"a\"o}
+
+\subsection{macros}
+%  macro: https://tex.stackexchange.com/questions/267980/what-is-a-primitive-a-macro-and-how-do-they-compare
+\def\lol{haha}
+\lol
+% https://tex.stackexchange.com/questions/655/what-is-the-difference-between-def-and-newcommand
+% > \newcommand is part of LaTeX; \def is part of TeX.
+\newcommand{\R}{\mathbb{R}}
+\[ \R \lol \]
+\newcommand{\bb}[1]{\mathbb{#1}}
+\( \bb{Q} \)
+
+\newcommand{\apa}{oohhaaahhaahh}
+\apa
+
 \section{Another section}
 
 % \includegraphics[width=0.5\textwidth, right]{./tex/chinstrap.png}

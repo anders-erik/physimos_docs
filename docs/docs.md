@@ -91,3 +91,4 @@ pdflatex physimos_component.tex
 - .log
     - [understanding the log file](https://tex.stackexchange.com/questions/32213/understanding-the-log-file)
 
+- .toc : simple text file that lists all sections/sub*sections from previous build. Thus two builds are needed in order to generate a toc if no initial toc file is present. 

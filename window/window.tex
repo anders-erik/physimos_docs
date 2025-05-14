@@ -1,14 +1,27 @@
 
 \documentclass[12pt]{article}
+
+% array/matrix
+\usepackage{amsmath}
+% '\mathbb{R}'
+\usepackage{amssymb} % or \usepackage{amsfonts}
+
 \begin{document}
 
 \tableofcontents
+
+\bigskip
+\bigskip
+\bigskip
+
+\pagebreak
+
 
 \section{Notation}
 
 \subsection{Coordinate Systems [$CS$]}
 
-A Coordinate system (often referred to as $CS$ ) is specified using a point (called its origin and is denoted by $CS_o$) and two unit axes ($CS_1$ and $CS_2$). 
+A Coordinate system (often referred to as $CS$) is specified using a point (called its origin and is denoted by $CS_o$) and two unit axes ($CS_1$ and $CS_2$). 
 
 
 \subsection{Unit}
@@ -39,64 +52,201 @@ The primary unit of the GLFW library is (virtual) screen coordinates, which we w
 
 Two coordinate systems are used. They differ only by a translation. 
 
-\textit{Virtual Screen} : measured from the top left corner of the primary monitor. A point in virtual screen coordinates will be written as $p_{sc}$.
+\textit{Virtual Screen}: measured from the top left corner of the primary monitor. A point in virtual screen coordinates will be written as $p_{sc}$.
 
-\textit{Content Area} : 
+\textit{Content Area}: 
 
 
 
 
 \section{Physimos Window [PW]}
 
-\subsection{Coordinate Systems}
+\LaTeXe.
 
+\subsection{Coordinate Systems}
 
 % TABLE
 \begin{center}
 % \begin{tabular}[t]{ | m{5em} | m{1cm}| m{1cm} | }
 % \begin{tabular}[b]{ | m{5em} || m{2cm} | m{1cm} | } 
-\begin{tabular}{|| c | c | c | c ||}
+
+% \renewcommand{\arraystretch}{2.0} % vertical padding
+% % \arraystretch{1}
+% % \sas
+% \setlength{\tabcolsep}{2.0em} % horizontal padding
+% \setlength{\extrarowheight}{6pt}
+
+
+
+% \renewcommand{\arraystretch}{2.0} % vertical padding
+\setlength{\tabcolsep}{1.5em} % horizontal padding
+
+    % \vspace*{10}z
+\begin{tabular}{| c  c  c  c |}
+    
     \hline
-    Name & Symbol & Unit & Matrix \\ 
+    Name & Symbol & Unit & $Matrix$ \\ 
     \hline
     \hline
-    Input & i & \textit{sc} &   \[ p_{target} = M_{i/target} p_i
-                        \] \\ 
-    \hline
-    Sanity & s & \textit{sc} &   \[ M_{i/s} = 
+
+
+    &   &   &  \\
+    Input & i & \textit{sc} &  
+    % \renewcommand{\arraystretch}{2.0} % vertical padding
+    \( p_{target} = M_{i/target} p_i \) 
+    \\
+
+
+    &   &   &  \\ 
+    Sanity & s & \textit{sc} &   $ M_{i/s} = 
                             \begin{pmatrix}
                             1 & 0 & 0 \\
                             0 & -1 & h_w \\
-                            0 & 0 & 1
-                            \end{pmatrix}
-                        \] \\ 
-    \hline
-    Normalized & n & nn & \[ M_{n/s} = 
+                            0 & 0 & 1 
+                            \end{pmatrix}$
+    \\ 
+
+
+    &   &   &  \\ 
+    Normalized & n & nn & \( M_{s/n} = 
                             \begin{pmatrix}
                             \frac{1}{w_w} & 0  \\
                             0 & \frac{1}{h_w} \\
-                            \end{pmatrix}
-                        \] \\ 
-    \hline
-    Pixels & p & px & \[    M_{s/p} = 
+                            \end{pmatrix} \) 
+    \\ 
+
+
+    &   &   &  \\ 
+    Pixels & p & px &       %\renewcommand{\arraystretch}{2.0} 
+                            \(    M_{s/p} = 
                             \begin{pmatrix}
                             CS_x & 0  \\
                             0 & CS_y \\
-                            \end{pmatrix}
-                        \] \\ 
-    \hline
-    Millimeters & m & mm & \[   M_{p/m} = 
+                            \end{pmatrix}\) 
+    \\ 
+
+
+    &   &   &  \\
+    Millimeters & m & mm &      % \renewcommand{\arraystretch}{2.0} 
+                                \(   M_{p/m} = 
                                 \begin{pmatrix}
                                 (\frac{dm_x}{dp})_x & 0  \\
                                 0 & (\frac{dm}{dp})_y \\
-                                \end{pmatrix}
-                            \]  \\ 
+                                \end{pmatrix}\)  
+    \\ 
+
+
+    &   &   &  \\ 
     \hline
+
 \end{tabular}
 \end{center}
 
 
+\setlength{\tabcolsep}{0.0em} % horizontal padding
 
+\renewcommand{\arraystretch}{1.0} % Increase vertical spacing
+
+\newcommand{\fixedrow}[1]{\rule{0pt}{3em}#1}
+
+$$
+\begin{array}{ c  c  c  c }
+    a & b & c & d \\[1.5em]
+    
+    \hline
+
+    % \rule{0pt}{0.5em}
+
+    % \hline
+
+    % \vspace{2em}
+
+    
+    \fixedrow
+    Pixels & p & px &    M_{s/p} = 
+                            \begin{pmatrix}
+                            CS_x & 0  \\
+                            0 & CS_y \\
+                            \end{pmatrix}
+    \\
+    \vspace{1em}
+    % \fixedrow
+
+    % \hline
+
+    \fixedrow
+    Pixels & p & px &    M_{s/p} = 
+                            \begin{bmatrix}
+                            CS_x & 0  \\
+                            0 & CS_y \\
+                            \end{bmatrix}
+    \\ 
+    \hline
+    
+\end{array}
+$$
+
+\begin{description}
+
+    \item[Input (\(i\)):] 
+    Unit: \textit{sc} \\
+    Matrix: 
+    \[
+    p_{target} = M_{i/target} p_i
+    \]
+
+    \item[Sanity (\(s\)):] 
+    Unit: \textit{sc} \\
+    Matrix: 
+    \[
+    M_{i/s} = 
+    \begin{pmatrix}
+    1 & 0 & 0 \\
+    0 & -1 & h_w \\
+    0 & 0 & 1 
+    \end{pmatrix}
+    \]
+
+
+    \item[Normalized (\(n\)):] 
+    Unit: \textit{nn} \\
+    Matrix: 
+    \[
+    M_{n/s} = 
+    \begin{pmatrix}
+    \frac{1}{w_w} & 0 \\
+    0 & \frac{1}{h_w}
+    \end{pmatrix}
+    \]
+
+    \renewcommand{\arraystretch}{2.0} % vertical padding
+
+    \item[Pixels (\(p\)):] 
+    Unit: \textit{px} \\
+    Matrix: 
+    \[
+    M_{s/p} = 
+    \begin{pmatrix}
+    CS_x & 0 \\
+    0 & CS_y
+    \end{pmatrix}
+    \]
+
+    \item[Millimeters (\(m\)):] 
+    Unit: \textit{mm} \\
+    Matrix: 
+    \[
+    M_{p/m} = 
+    \begin{pmatrix}
+    (\frac{dm_x}{dp})_x & 0 \\
+    0 & (\frac{dm}{dp})_y
+    \end{pmatrix}
+    \]
+
+
+    \renewcommand{\arraystretch}{1.0} % vertical padding
+
+\end{description}
 
 
 \end{document}
