@@ -6,6 +6,10 @@
 % '\mathbb{R}'
 \usepackage{amssymb} % or \usepackage{amsfonts}
 
+\usepackage{float}      % [H] positioning
+\usepackage{graphicx}   % LaTeX package to import graphics
+\graphicspath{{./window}}
+
 \begin{document}
 
 \tableofcontents
@@ -37,29 +41,45 @@ A point is written as $p_{CS}$, with $CS$ representing the specific coordinate s
 
 Formally a point is defined as $p = p_{CS} := \{(x, y) \in \mathbb{R}^2\}$, unless explicitly stated otherwise. Only x or y can be referred to using the set $p_{\{x, y\}}$ or $p_{CS_{\{x, y\}}}$.
 
+\section{Wayland}
+
+\subsection{Overview}
+
+
+
+
 \section{GLFW}
 
 https://www.glfw.org
+\vspace{1em}
 
-As the Physimos window depends on GLFW for cross platform OS interaction, some basic GLFW coverage is necessary here.
+As the Physimos window partly depends on GLFW for cross platform OS interaction, some basic GLFW coverage is necessary here.
 
 \subsection{Units}
 
-The primary unit of the GLFW library is (virtual) screen coordinates, which we will refere to as $sc$.
+The primary unit of the GLFW library is (virtual) screen coordinates, which we will refer to as $sc$.
 
 
 \subsection{Coordinate systems}
 
 Two coordinate systems are used. They differ only by a translation. 
 
-\textit{Virtual Screen}: measured from the top left corner of the primary monitor. A point in virtual screen coordinates will be written as $p_{sc}$.
 
-\textit{Content Area}: 
+\textit{Virtual Screen}: measured from the top left corner of the \textit{primary monitor}. A point in Virtual Screen coordinates will be written as $p_{sc}$.
+
+\textit{Content Area}: measured from the top left corner of a \textit{window}. A point in Content Area coordinates will be written as $p_{ca}$.
 
 
 
 
 \section{Physimos Window [PW]}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{./window-inkscape.png}
+    \caption{Physimos window}
+    \label{fig:mesh1}
+\end{figure}
 
 \LaTeXe.
 
@@ -93,7 +113,7 @@ Two coordinate systems are used. They differ only by a translation.
     &   &   &  \\
     Input & i & \textit{sc} &  
     % \renewcommand{\arraystretch}{2.0} % vertical padding
-    \( p_{target} = M_{i/target} p_i \) 
+    \( p_{x} = M_{i/x} p_i \) 
     \\
 
 
@@ -130,7 +150,7 @@ Two coordinate systems are used. They differ only by a translation.
     Millimeters & m & mm &      % \renewcommand{\arraystretch}{2.0} 
                                 \(   M_{p/m} = 
                                 \begin{pmatrix}
-                                (\frac{dm_x}{dp})_x & 0  \\
+                                (\frac{dm}{dp})_x & 0  \\
                                 0 & (\frac{dm}{dp})_y \\
                                 \end{pmatrix}\)  
     \\ 
@@ -142,112 +162,19 @@ Two coordinate systems are used. They differ only by a translation.
 \end{tabular}
 \end{center}
 
-
 \setlength{\tabcolsep}{0.0em} % horizontal padding
 
-\renewcommand{\arraystretch}{1.0} % Increase vertical spacing
-
-\newcommand{\fixedrow}[1]{\rule{0pt}{3em}#1}
-
-$$
-\begin{array}{ c  c  c  c }
-    a & b & c & d \\[1.5em]
-    
-    \hline
-
-    % \rule{0pt}{0.5em}
-
-    % \hline
-
-    % \vspace{2em}
-
-    
-    \fixedrow
-    Pixels & p & px &    M_{s/p} = 
-                            \begin{pmatrix}
-                            CS_x & 0  \\
-                            0 & CS_y \\
-                            \end{pmatrix}
-    \\
-    \vspace{1em}
-    % \fixedrow
-
-    % \hline
-
-    \fixedrow
-    Pixels & p & px &    M_{s/p} = 
-                            \begin{bmatrix}
-                            CS_x & 0  \\
-                            0 & CS_y \\
-                            \end{bmatrix}
-    \\ 
-    \hline
-    
-\end{array}
-$$
-
+where: 
 \begin{description}
-
-    \item[Input (\(i\)):] 
-    Unit: \textit{sc} \\
-    Matrix: 
-    \[
-    p_{target} = M_{i/target} p_i
-    \]
-
-    \item[Sanity (\(s\)):] 
-    Unit: \textit{sc} \\
-    Matrix: 
-    \[
-    M_{i/s} = 
-    \begin{pmatrix}
-    1 & 0 & 0 \\
-    0 & -1 & h_w \\
-    0 & 0 & 1 
-    \end{pmatrix}
-    \]
-
-
-    \item[Normalized (\(n\)):] 
-    Unit: \textit{nn} \\
-    Matrix: 
-    \[
-    M_{n/s} = 
-    \begin{pmatrix}
-    \frac{1}{w_w} & 0 \\
-    0 & \frac{1}{h_w}
-    \end{pmatrix}
-    \]
-
-    \renewcommand{\arraystretch}{2.0} % vertical padding
-
-    \item[Pixels (\(p\)):] 
-    Unit: \textit{px} \\
-    Matrix: 
-    \[
-    M_{s/p} = 
-    \begin{pmatrix}
-    CS_x & 0 \\
-    0 & CS_y
-    \end{pmatrix}
-    \]
-
-    \item[Millimeters (\(m\)):] 
-    Unit: \textit{mm} \\
-    Matrix: 
-    \[
-    M_{p/m} = 
-    \begin{pmatrix}
-    (\frac{dm_x}{dp})_x & 0 \\
-    0 & (\frac{dm}{dp})_y
-    \end{pmatrix}
-    \]
-
-
-    \renewcommand{\arraystretch}{1.0} % vertical padding
-
+    \item[$w_w$] = Window Width
+    \item[$h_w$] = Window Height
+    \item[$CS$]  = Content Scale 
+    \item[$\frac{dm}{dp}$] = millimeters per pixel
 \end{description}
 
+
+\renewcommand{\arraystretch}{1.0} % Increase vertical spacing
+\newcommand{\fixedrow}[1]{\rule{0pt}{3em}#1}
 
 \end{document}
 
